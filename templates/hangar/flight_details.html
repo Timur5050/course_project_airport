@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+{% load static %}
+
+
+{% block content %}
+<style>
+    /* Стиль для фону */
+    body {
+        background-image: url('{% static selected_image %}');
+        background-size: cover; /* Охоплює всю область, зберігаючи пропорції */
+        background-position: center; /* Вирівнює фон по центру */
+        background-repeat: no-repeat; /* Запобігає повторенню фону */
+        height: 100vh; /* Займає всю висоту вікна */
+    }
+
+    /* Додатковий стиль для контейнера */
+    .container {
+        background-color: rgba(255, 255, 255, 0.8); /* Напівпрозорий фон для кращої читабельності тексту */
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2); /* Тінь для об’єму */
+    }
+</style>
+
+<div class="container flight-details mt-4" style="max-width: 600px;">
+  <h1 class="flight-name text-center">{{ flight.new_name }}</h1>
+  <div class="flight-info mb-3 text-center">
+    <p><strong>Тривалість:</strong> {{ flight.duration }} годин</p>
+    <p><strong>Дата рейсу:</strong> {{ flight.flight_date }}</p>
+  </div>
+
+  <h4 class="text-center">Оберіть місця для замовлення:</h4>
+  <form method="post">
+    {% csrf_token %}
+    <div class="seat-selection" style="max-height: 300px; overflow-y: auto;">
+      <table class="table table-sm table-bordered text-center" style="font-size: 12px;">
+        {% for row, seat, is_available in available_seats %}
+          {% if forloop.first or row != forloop.parentloop.previous.row %}
+          <tr><th>Ряд {{ row }}</th>{% endif %}
+          <td class="{% if is_available %}available-seat{% else %}booked-seat{% endif %}" style="padding: 5px;">
+            {% if is_available %}
+              <label class="seat-label">
+                <input type="checkbox" name="seats" value="{{ row }}-{{ seat }}">
+                {{ seat }}
+              </label>
+            {% else %}
+              <span>{{ seat }}</span>
+            {% endif %}
+          </td>
+          {% if forloop.last or row != forloop.parentloop.next.row %}
+          </tr>{% endif %}
+        {% endfor %}
+      </table>
+    </div>
+    <button type="submit" class="btn btn-primary btn-block mt-3">Замовити квитки</button>
+  </form>
+
+  <form action="{% url 'hangar:flight-list' %}" method="get" class="back-form mt-3 text-center">
+    <input type="submit" value="Назад" class="btn btn-secondary btn-block">
+  </form>
+</div>
+{% endblock %}
