@@ -1,0 +1,320 @@
+
+.form-inline {
+    background-color: #f8f9fa;
+    padding: 20px;
+    border-radius: 8px;
+    border: 1px solid #dee2e6;
+}
+
+.list-group-item {
+    transition: background-color 0.2s ease;
+}
+
+.list-group-item:hover {
+    background-color: #e9ecef;
+}
+
+.pagination .page-link {
+    color: #007bff;
+}
+
+.pagination .page-item.active .page-link {
+    background-color: #007bff;
+    border-color: #007bff;
+}
+
+.pagination .page-link:hover {
+    color: #0056b3;
+}
+
+.btn-primary {
+    background-color: #28a745;
+    border-color: #28a745;
+}
+
+.btn-primary:hover {
+    background-color: #218838;
+    border-color: #1e7e34;
+}
+
+/* Style for flight details container */
+.flight-details {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+}
+
+/* Style for flight name */
+.flight-name {
+  font-size: 2em;
+  margin-bottom: 10px;
+}
+
+/* Style for flight information section */
+.flight-info {
+  margin-bottom: 20px;
+}
+
+/* Style for the back button */
+.back-form {
+  text-align: center;
+}
+
+.btn {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.btn-primary {
+  background-color: #007bff;
+  color: #fff;
+}
+
+.btn-primary:hover {
+  background-color: #0056b3;
+}
+
+/* Style for form container */
+.form-container {
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+}
+
+/* Style for form title */
+.form-title {
+  font-size: 1.5em;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+/* Style for the form */
+.form {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Style for form fields */
+.form p {
+  margin-bottom: 15px;
+}
+
+/* Style for submit button */
+.btn {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1em;
+}
+
+.btn-primary {
+  background-color: #007bff;
+  color: #fff;
+}
+
+.btn-primary:hover {
+  background-color: #0056b3;
+}
+
+/* Style for search container */
+.search-container {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+/* Style for inline form */
+.form-inline {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Style for search button */
+.search-button {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 5px;
+  background-color: #6c757d;
+  color: #fff;
+  cursor: pointer;
+  font-size: 1.1em;
+}
+
+.search-button:hover {
+  background-color: #5a6268;
+}
+
+/* Style for astronaut list */
+.astronaut-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.astronaut-list li {
+  margin-bottom: 10px;
+}
+
+.astronaut-link {
+  text-decoration: none;
+  color: #007bff;
+  font-size: 1.1em;
+}
+
+.astronaut-link:hover {
+  text-decoration: underline;
+}
+
+/* Style for pagination */
+.pagination {
+  margin: 20px 0;
+  text-align: center;
+}
+
+.step-links {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.pagination-link {
+  text-decoration: none;
+  color: #007bff;
+  font-size: 1em;
+}
+
+.pagination-link:hover {
+  text-decoration: underline;
+}
+
+/* Style for create button */
+.create-button {
+  text-align: center;
+}
+
+.btn-primary {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  background-color: #007bff;
+  color: #fff;
+  cursor: pointer;
+  font-size: 1em;
+}
+
+.btn-primary:hover {
+  background-color: #0056b3;
+}
+
+.profile-container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: #f9f9f9;
+}
+.profile-header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+.profile-header h1 {
+  font-size: 2.5rem;
+  color: #333;
+}
+.profile-header h3 {
+  font-size: 1.5rem;
+  color: #555;
+}
+.profile-info p {
+  font-size: 1.1rem;
+  color: #666;
+  margin: 10px 0;
+}
+.profile-info p strong {
+  color: #333;
+}
+
+.form-container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: #f9f9f9;
+}
+.form-container h1 {
+  text-align: center;
+  color: #333;
+  margin-bottom: 20px;
+}
+.form-container form {
+  display: flex;
+  flex-direction: column;
+}
+.form-container form p {
+  margin-bottom: 15px;
+  font-size: 1rem;
+  color: #666;
+}
+.form-container input[type="submit"] {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s ease;
+}
+.form-container input[type="submit"]:hover {
+  background-color: #0056b3;
+}
+
+.hero {
+    background: url('{% static "images/hero-background.jpg" %}') no-repeat center center;
+    background-size: cover;
+}
+
+.card {
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.card-img-top {
+    border-radius: 10px 10px 0 0;
+}
+
+.card-body {
+    text-align: center;
+}
+
+.card-title {
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+}
+
+.card-text {
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.background-image {
+    background-image: url('/static/css/space1.jpg');
+    background-size: cover; /* Adjusts the size of the image */
+    background-position: center; /* Centers the image */
+    background-repeat: no-repeat; /* Ensures the image does not repeat */
+    /* Optional: Set a height if needed */
+    height: 100vh; /* Adjust the height as needed */
+}
+
