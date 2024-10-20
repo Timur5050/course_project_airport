@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<style>
+  body {
+    background-color: #121212; /* Темний фон для всього тіла */
+    color: white; /* Світлий текст для контенту */
+  }
+
+  .hero {
+    background: linear-gradient(135deg, #1a1a1a, #333); /* Градієнт для хедера */
+  }
+
+  .card {
+    background-color: #1f1f1f; /* Темний фон для карток */
+    border: none; /* Без обводки */
+  }
+
+  .btn-outline-info {
+    color: #17a2b8; /* Світлий кольор для кнопки */
+    border-color: #17a2b8; /* Обводка кнопки */
+  }
+
+  .btn-outline-info:hover {
+    background-color: #17a2b8; /* Зміна фону кнопки при наведенні */
+    color: white; /* Зміна кольору тексту кнопки при наведенні */
+  }
+
+  .footer {
+    background-color: #1a1a1a; /* Темний фон для футера */
+  }
+</style>
+
+<header class="hero text-white text-center py-5">
+  <div class="container">
+    <h1 class="display-4">Центральний Аеропорт</h1>
+    <p class="lead">Інформація про рейси та аеропорти в одному місці.</p>
+  </div>
+</header>
+
+<div class="container my-5">
+  <div class="row justify-content-center">
+    <div class="col-md-6 mb-4"> <!-- Збільшено до col-md-6 -->
+      <div class="card shadow-lg h-100">
+        <img src="{% static 'images/flights2.jpg' %}" class="card-img-top" alt="Рейси" style="height: 450px; object-fit: cover;">
+        <div class="card-body text-center d-flex flex-column">
+          <h5 class="card-title">Рейси</h5>
+          <p class="card-text">Перевіряйте розклад рейсів та їх статус.</p>
+          <a href="{% url 'hangar:flight-list' %}" class="btn btn-outline-info mt-auto">Переглянути Рейси</a>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6 mb-4"> <!-- Збільшено до col-md-6 -->
+      <div class="card shadow-lg h-100">
+        <img src="{% static 'images/plane.jpg' %}" class="card-img-top" alt="Аеропорти" style="height: 450px; object-fit: cover;">
+        <div class="card-body text-center d-flex flex-column">
+          <h5 class="card-title">Аеропорти</h5>
+          <p class="card-text">Дізнайтеся більше про доступні аеропорти.</p>
+          <a href="{% url 'hangar:Airplane-list' %}" class="btn btn-outline-info mt-auto">Переглянути Аеропорти</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer class="footer text-center py-4">
+  <p>&copy; 2024 Центральний Аеропорт. Всі права захищені.</p>
+</footer>
+
+{% endblock %}
