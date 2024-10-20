@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<style>
+  body {
+    background-image: url('{% static "images/registration.jpg" %}');
+    background-size: cover;
+    background-position: center;
+    color: #ffffff;
+    font-family: Arial, sans-serif;
+  }
+
+  .form-container {
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 2rem;
+    border-radius: 10px;
+    max-width: 400px;
+    margin: auto;
+    margin-top: 10%;
+  }
+
+  input[type="submit"] {
+    margin-top: 1rem;
+  }
+</style>
+<div class="form-container">
+  <h1>Create Your Profile</h1>
+  <form action="" method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" class="btn btn-primary" value="Submit">
+  </form>
+</div>
+
+{% endblock %}
