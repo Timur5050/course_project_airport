@@ -14,6 +14,7 @@ from django.urls import reverse
 from django.core.exceptions import ValidationError
 from django.contrib import messages
 from django.db import transaction
+from django.core.paginator import Paginator
 
 from hangar.forms import (
     FlightSearchFormSource,
@@ -44,12 +45,18 @@ class UserProfileView(LoginRequiredMixin, DetailView):
     model = User
     template_name = "hangar/user_details.html"
     context_object_name = "user"
+    paginate_by = 5
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         user = self.object
         orders = Order.objects.filter(user=user).select_related('user').prefetch_related('tickets__flight')
-        context['orders'] = orders
+
+        paginator = Paginator(orders, self.paginate_by)
+        page = self.request.GET.get('page')
+        orders_page = paginator.get_page(page)
+
+        context['orders'] = orders_page
         context['update_form'] = UserUpdateForm(instance=user)
         return context
 
@@ -163,7 +170,7 @@ class FlightDetailView(LoginRequiredMixin, DetailView):
             "images/flight_detail3.jpg",
         ]
         selected_image = random.choice(images)
-        #print(available_seats)
+        # print(available_seats)
         context.update(
             {
                 'available_seats': result,
