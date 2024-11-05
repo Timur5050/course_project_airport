@@ -1,0 +1,162 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<style>
+    /* Стиль для фону */
+    body {
+        background-image: url('{% static "images/user_page.jpg" %}');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        height: 100vh;
+        font-family: 'Arial', sans-serif;
+        color: #ffffff;
+    }
+
+    /* Стиль для профілю */
+    .profile-container {
+        background-color: rgba(0, 0, 0, 0.7);
+        padding: 30px;
+        border-radius: 15px;
+        max-width: 900px;
+        margin: 50px auto;
+        box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5);
+    }
+
+    .profile-header {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    .profile-header h1 {
+        font-size: 2.5em;
+        margin-bottom: 10px;
+    }
+
+    .profile-header h3 {
+        font-size: 1.5em;
+        color: #ffcc00;
+    }
+
+    .profile-info {
+        margin-bottom: 30px;
+    }
+
+    .profile-info p {
+        margin: 10px 0;
+        font-size: 1.2em;
+    }
+
+    .profile-info strong {
+        color: #ffcc00;
+    }
+
+    .orders-section {
+        margin-top: 30px;
+    }
+
+    .orders-section h2 {
+        text-align: center;
+        margin-bottom: 15px;
+    }
+
+    .orders-section ul {
+        list-style-type: none;
+        padding: 0;
+        max-height: 500px; /* Збільшено висоту блоку */
+        overflow-y: auto;
+    }
+
+    .orders-section li {
+        margin-bottom: 20px;
+        padding: 15px;
+        background-color: rgba(255, 255, 255, 0.1);
+        border-radius: 10px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+    }
+
+    .orders-section li strong {
+        color: #ffcc00;
+    }
+</style>
+
+
+
+  <div class="profile-container">
+  <div class="profile-header">
+    <h1>Your Profile</h1>
+    <h3>Hello, <span style="color: #ffcc00;">{{ user.username }}</span></h3>
+  </div>
+  <div class="profile-info">
+    <p><strong class="label">Name:</strong> {{ user.first_name }}</p>
+    <p><strong class="label">Last Name:</strong> {{ user.last_name }}</p>
+    <p><strong class="label">Email:</strong> {{ user.email }}</p>
+  </div>
+
+  <!-- Button to show update form -->
+  <button id="updateProfileBtn">Update Profile</button>
+
+  <!-- Update profile form (initially hidden) -->
+  <div id="updateProfileForm" style="display: none;">
+    <h2>Update Your Profile</h2>
+    <form method="POST">
+      {% csrf_token %}
+      <div>
+        <label for="first_name">First Name:</label>
+        <input type="text" id="first_name" name="first_name" value="{{ user.first_name }}">
+      </div>
+      <div>
+        <label for="last_name">Last Name:</label>
+        <input type="text" id="last_name" name="last_name" value="{{ user.last_name }}">
+      </div>
+      <div>
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" value="{{ user.email }}">
+      </div>
+      <button type="submit">Update Profile</button>
+      <button type="button" id="cancelBtn">Cancel</button>
+    </form>
+  </div>
+
+  <!-- Display previous orders -->
+  <div class="orders-section">
+    <h2>Your Previous Orders</h2>
+    {% if orders %}
+      <ul>
+        {% for order in orders %}
+          <li>
+            <strong>Order created at:</strong> {{ order.created_at }}<br>
+            <strong>Tickets:</strong>
+            <ul>
+              {% for ticket in order.tickets.all %}
+                <li>
+                  <strong>Flight:</strong> {{ ticket.flight.new_name }}<br>
+                  <strong>Row:</strong> {{ ticket.row }} | <strong>Seat:</strong> {{ ticket.seat }}<br>
+                  <strong>Flight Date:</strong> {{ ticket.flight.flight_date }}<br>
+                </li>
+              {% endfor %}
+            </ul>
+          </li>
+        {% endfor %}
+      </ul>
+    {% else %}
+      <p>No previous orders found.</p>
+    {% endif %}
+  </div>
+
+  <!-- JavaScript for showing/hiding the update form -->
+  <script>
+      document.getElementById('updateProfileBtn').addEventListener('click', function () {
+          document.getElementById('updateProfileForm').style.display = 'block';
+      });
+
+      document.getElementById('cancelBtn').addEventListener('click', function () {
+          document.getElementById('updateProfileForm').style.display = 'none';
+      });
+  </script>
+
+
+
+
+{% endblock %}
